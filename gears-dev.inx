@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
 	<_name>Gear-dev</_name>
-	<id>com.gihub.jnweiger.inkscape-gears-dev</id>
-	<!-- org.ekips.filter.gears-dev (where did this come from?) -->
-	<dependency type="executable" location="extensions">gears-dev.py</dependency>
-	<dependency type="executable" location="extensions">inkex.py</dependency>
-	<param name='active-tab' type="notebook">
+	<id>com.playfultechnology.inkscape-gears-dev</id>
+	<dependency type="executable" location="inx">gears-dev.py</dependency>
+	
+	<param name="active-tab" type="notebook">
 		<page name="Gear" _gui-text="Gears">
 			<param name="teeth"     type="int"     min="3"    max="1200"    _gui-text="Number of teeth (3..1200)">24</param>
 			<param name="dimension" type="float"   min="0.1"  max="1000.0"	precision="5"	_gui-text="Tooth size (Module, CP, DP)">1.0</param>
@@ -20,7 +19,7 @@
 			<param name="pitchcircle" type="boolean" _gui-text="Draw pitch circle (for meshing)">false</param>
 			<param name="annotation"  type="boolean" _gui-text="Draw annotation text">false</param>
 		</page>	
-		<page name='advanced' _gui-text='Advanced options'>
+		<page name="advanced" _gui-text="Advanced options">
 			<param name="units"     type="optiongroup" appearance="minimal" _gui-text="Units">
 				<option value="mm">mm</option>
 				<option value="cm">cm</option>
@@ -45,22 +44,12 @@
 			</param>
 			<_param name="help" type="description">Use higher accuracy with lower tooth count. Set Number of spokes to 0 to disable. Set Mount hole diameter to 0 to disable.</_param>
 		</page>
-		<page name='rack' _gui-text='Rack'>
+		<page name="rack" _gui-text="Rack">
 			<param name="draw-rack"     type="boolean" _gui-text="Draw rack">false</param>
 			<param name="rack-teeth-length" type="int"   min="1"   max="500" _gui-text="Rack length (teeth)">10</param>
 			<param name="rack-base-height"  type="float" min="0.1" max="100"	 precision="3"	_gui-text="Height of base">5</param>
 			<param name="rack-base-tab"     type="float" min="0"   max="100"	 precision="3"	_gui-text="Length of end tab">5</param>
 			<_param name="packing"     type="description" xml:space="preserve">The matching rack gear is drawn additionally and below the spur gear.
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			</_param>
 		</page>
 		<page name="Usage1" _gui-text="Usage-core">
@@ -89,13 +78,6 @@ The higher the pressure angle, the stronger the teeth. With higher pressure angl
 
 
 Caution: Undercut is currently not generated. E.g. a gear at pressure angle 20 deg and less than 17 teeth would either need a (negative!) profile shifting or will cause undercut. We only produce a warning.
-
-
-
-
-
-
-
 			</_param>
 			<param name="undercut-alert" type="boolean" _gui-text="Confirm gear with undercut">true</param>
 		</page>
@@ -107,6 +89,6 @@ Caution: Undercut is currently not generated. E.g. a gear at pressure angle 20 d
 		</effects-menu>						    		
 	</effect>
 	<script>
-		<command reldir="extensions" interpreter="python">gears-dev.py</command>
+		<command location="inx" interpreter="python">gears-dev.py</command>
 	</script>
 </inkscape-extension>
