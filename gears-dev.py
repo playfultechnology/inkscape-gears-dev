@@ -106,11 +106,11 @@ def points_to_svgd(p):
 
 def draw_SVG_circle(parent, r, cx, cy, name, style):
     " add an SVG circle entity to parent "
-    circ_attribs = {'style': simplestyle.formatStyle(style),
+    circ_attribs = {'style': str(inkex.Style(style)),
                     'cx': str(cx), 'cy': str(cy), 
                     'r': str(r),
                     inkex.addNS('label','inkscape'):name}
-    circle = inkex.etree.SubElement(parent, inkex.addNS('circle','svg'), circ_attribs )
+    circle = etree.SubElement(parent, inkex.addNS('circle','svg'), circ_attribs )
 
 
 ### Undercut support functions
@@ -711,17 +711,17 @@ class Gears(inkex.Effect):
             t = 'translate(' + str( xoff ) + ',' + str( pitch_radius ) + ')'
             g_attribs = { inkex.addNS('label', 'inkscape'): 'RackGear' + str(tooth_count),
                           'transform': t }
-            rack = inkex.etree.SubElement(g, 'g', g_attribs)
+            rack = etree.SubElement(g, 'g', g_attribs)
 
             # Create SVG Path for gear
             style = {'stroke': path_stroke, 'fill': 'none', 'stroke-width': path_stroke_width }
-            gear_attribs = { 'style': simplestyle.formatStyle(style), 'd': path }
-            gear = inkex.etree.SubElement(
+            gear_attribs = { 'style': str(inkex.Style(style)), 'd': path }
+            gear = etree.SubElement(
                 rack, inkex.addNS('path', 'svg'), gear_attribs)
             if guide_path is not None:
                 style2 = { 'stroke': path_stroke, 'fill': 'none', 'stroke-width': path_stroke_light }
-                gear_attribs2 = { 'style': simplestyle.formatStyle(style2), 'd': guide_path }
-                gear = inkex.etree.SubElement(
+                gear_attribs2 = { 'style': str(inkex.Style(style2)), 'd': guide_path }
+                gear = etree.SubElement(
                     rack, inkex.addNS('path', 'svg'), gear_attribs2)
 
 
